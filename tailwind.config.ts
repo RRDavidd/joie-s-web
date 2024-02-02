@@ -13,8 +13,19 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        mono: ['var(--blankRiver)']
+      },
+      colors: {
+        default: '#E4267C'
+      },
+      textShadow: {
+        xl: '5px 5px #000'
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-textshadow'),
+  ],
 };
 export default config;
