@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Header() {
+export default function Banner() {
   return (
     <>
       <figure className="relative w-100 h-[950px] shadow-inner">
