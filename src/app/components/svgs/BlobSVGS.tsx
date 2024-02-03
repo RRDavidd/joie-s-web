@@ -52,7 +52,6 @@ export default function BlobSVGS() {
 
   return (
     <>
-      {console.log(blobPosition)}
       {blobsSrc.map(
         (blob, index) =>
           blobPosition[index] ? (
