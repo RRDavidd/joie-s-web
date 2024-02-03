@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Blobs from "./Blobs";
 
 export default function Banner() {
   return (
     <>
-      <figure className="relative w-100 h-[950px] shadow-inner">
+      <figure className="relative w-full h-[920px] shadow-inner">
         <Image
           src={"/@/../nana.jpg"}
           fill
@@ -17,6 +18,7 @@ export default function Banner() {
           </h1>
           <p className="text-center">Hi beb happi valentines day :D</p>
         </div>
+        <Blobs />
       </figure>
     </>
   );
