@@ -1,4 +1,3 @@
-import Image from "next/image";
 import BlobSVGS from "./svgs/BlobSVGS";
 
 export default function Blobs() {

@@ -45,7 +45,7 @@ export default function BlobSVGS() {
       Array(4)
         .fill(0)
         .map((_, i) => {
-          return [makeRandomPosition(700), makeRandomPosition(1400)];
+          return [makeRandomPosition(500), makeRandomPosition(1400)];
         })
     );
   }, []);
