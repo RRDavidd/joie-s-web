@@ -81,7 +81,7 @@ export default function Banner() {
       ) : (
         <figure className="relative w-full h-screen">
           <Image
-            src={"/@/../nana.jpg"}
+            src={"/../../nana.jpg"}
             fill
             alt="nana"
             className="object-cover opacity-30"
