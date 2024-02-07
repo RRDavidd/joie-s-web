@@ -6,6 +6,7 @@ import Symbols from "./Symbols";
 import { useEffect, useState } from "react";
 import AudioPlaySpook from "./AudioPlaySpook";
 import AudioPlayYay from "./AudioPlayYay";
+import AudioPlayNana from "./AudioPlayNana";
 
 const textArray = [
   "No",
@@ -14,6 +15,8 @@ const textArray = [
   "Last Chance",
 ];
 
+const nanaSongs = ["/@/../scream.mp3"];
+
 export default function Banner() {
   const [count, setCount] = useState(0);
   const [noText, setNoText] = useState(textArray[0]);
@@ -21,6 +24,8 @@ export default function Banner() {
   const [audio, setAudio] = useState(false);
   const [spook, setSpook] = useState(false);
   const [yes, setYes] = useState(false);
+  const [song, setSong] = useState(nanaSongs[0]);
+  const [playSong, setPlaySong] = useState(false);
 
   const handleClick = () => {
     const newCount = count + 1;
@@ -34,6 +39,13 @@ export default function Banner() {
 
   const handleYes = () => {
     setYes(true);
+  };
+
+  const handleNanaSong = () => {
+    setPlaySong(false);
+    const randomSong = Math.floor(Math.random() * nanaSongs.length);
+    setSong(nanaSongs[randomSong]);
+    setPlaySong(true);
   };
 
   useEffect(() => {
@@ -99,6 +111,13 @@ export default function Banner() {
                   {countdown || noText}
                 </button>
               </div>
+              <button
+                onClick={handleNanaSong}
+                type="button"
+                className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              >
+                Just play a random NANA song
+              </button>
             </div>
           </div>
           {/* <Blobs /> */}
@@ -125,6 +144,10 @@ export default function Banner() {
           />
           <AudioPlayYay onEnded={() => setYes(false)} />
         </>
+      )}
+
+      {playSong && (
+        <AudioPlayNana onEnded={() => setPlaySong(false)} song={song} />
       )}
     </>
   );
