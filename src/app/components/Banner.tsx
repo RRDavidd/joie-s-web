@@ -4,7 +4,8 @@ import Image from "next/image";
 import Blobs from "./Blobs";
 import Symbols from "./Symbols";
 import { useEffect, useState } from "react";
-import AudioPlay from "./AudioPlay";
+import AudioPlaySpook from "./AudioPlaySpook";
+import AudioPlayYay from "./AudioPlayYay";
 
 const textArray = [
   "No",
@@ -19,6 +20,7 @@ export default function Banner() {
   const [countdown, setCountdown] = useState<number | null>(null);
   const [audio, setAudio] = useState(false);
   const [spook, setSpook] = useState(false);
+  const [yes, setYes] = useState(false);
 
   const handleClick = () => {
     const newCount = count + 1;
@@ -28,6 +30,10 @@ export default function Banner() {
     } else {
       setCountdown(3);
     }
+  };
+
+  const handleYes = () => {
+    setYes(true);
   };
 
   useEffect(() => {
@@ -79,6 +85,7 @@ export default function Banner() {
               <p className="">Be my Valentine?</p>
               <div className="">
                 <button
+                  onClick={handleYes}
                   type="button"
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 >
@@ -99,12 +106,25 @@ export default function Banner() {
         </figure>
       )}
       {audio && (
-        <AudioPlay
+        <AudioPlaySpook
           onEnded={() => {
             setAudio(false);
             setSpook(false);
           }}
         />
+      )}
+
+      {yes && (
+        <>
+          <Image
+            src={"/@/../yay.jpg"}
+            fill
+            alt="yay"
+            priority
+            draggable={false}
+          />
+          <AudioPlayYay onEnded={() => setYes(false)} />
+        </>
       )}
     </>
   );
